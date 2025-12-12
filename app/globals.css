@@ -359,3 +359,70 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* --------------------------------------------
+   Cursor Animations
+   -------------------------------------------- */
+
+/* Pink cursor: bottom left to top left, slow vertical movement with ~2px variation */
+@keyframes cursorPinkMove {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-1px, -4px);
+  }
+  50% {
+    transform: translate(1px, -8px);
+  }
+  75% {
+    transform: translate(-1px, -4px);
+  }
+}
+
+/* Green cursor: top right to bottom right, subtle diagonal movement */
+@keyframes cursorGreenMove {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(1px, 2px);
+  }
+  50% {
+    transform: translate(2px, 4px);
+  }
+  75% {
+    transform: translate(1px, 2px);
+  }
+}
+
+/* Red cursor: top left to top right, subtle horizontal movement */
+@keyframes cursorRedMove {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(2px, -1px);
+  }
+  50% {
+    transform: translate(4px, 1px);
+  }
+  75% {
+    transform: translate(2px, -1px);
+  }
+}
+
+.cursor-pink-animate {
+  animation: cursorPinkMove 8s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.cursor-green-animate {
+  animation: cursorGreenMove 10s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.cursor-red-animate {
+  animation: cursorRedMove 9s ease-in-out infinite;
+  animation-delay: 1s;
+}

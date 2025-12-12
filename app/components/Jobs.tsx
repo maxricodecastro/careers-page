@@ -1,4 +1,5 @@
 import JobItem from './JobItem';
+import DesignOpportunities from './DesignOpportunities';
 import jobsData from '../data/jobs.json';
 
 export default function Jobs() {
@@ -108,14 +109,21 @@ export default function Jobs() {
 
           {/* Job Listings - spans all 4 columns, stacked vertically */}
           <div className="col-span-4 relative z-10">
-            {jobsData.map((job) => (
+            {jobsData.map((job, index) => (
               <JobItem
                 key={job.id}
                 title={job.title}
                 department={job.department}
                 location={job.location}
+                isLast={index === jobsData.length - 1}
               />
             ))}
+          </div>
+
+          {/* Design Opportunities Component - spans all 4 columns */}
+          {/* TODO: Adjust top margin as needed for spacing */}
+          <div className="col-span-4 relative z-10" style={{ marginTop: '96px' }}>
+            <DesignOpportunities />
           </div>
         </div>
       </div>

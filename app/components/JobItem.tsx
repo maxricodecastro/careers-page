@@ -2,11 +2,12 @@ interface JobItemProps {
   title: string;
   department?: string | null;
   location?: string[];
+  isLast?: boolean;
 }
 
-export default function JobItem({ title, department, location }: JobItemProps) {
+export default function JobItem({ title, department, location, isLast }: JobItemProps) {
   return (
-    <div className="relative bg-[var(--bg-black)] hover:bg-[#131313] transition-colors border-t border-r border-l border-[var(--divider)] cursor-pointer">
+    <div className={`relative bg-[var(--bg-black)] hover:bg-[#131313] transition-colors border-t border-r border-l ${isLast ? 'border-b' : ''} border-[var(--divider)] cursor-pointer`}>
       {/* Row layout with three groups: Title+Dept | Location | Button */}
       {/* Content spans full width, location aligned to start of column 3 (50% of grid) */}
       <div className="container-main relative">
