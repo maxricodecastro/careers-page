@@ -204,6 +204,22 @@ body {
   font-weight: 400;
 }
 
+/* Body Medium */
+.text-body-md {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+  font-weight: 400;
+}
+
+/* Body Small */
+.text-body-sm {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  font-weight: 400;
+}
+
 /* Small Text */
 .text-small {
   font-size: 14px;

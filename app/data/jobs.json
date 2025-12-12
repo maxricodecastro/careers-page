@@ -1,0 +1,63 @@
+[
+  {
+    "id": "1",
+    "title": "General",
+    "department": null,
+    "location": []
+  },
+  {
+    "id": "2",
+    "title": "Software Engineer - Frontend",
+    "department": "Engineering",
+    "location": ["New York City", "San Francisco", "Buenos Aires"]
+  },
+  {
+    "id": "3",
+    "title": "Software Engineer - Full Stack",
+    "department": "Engineering",
+    "location": ["New York City", "San Francisco", "Buenos Aires"]
+  },
+  {
+    "id": "4",
+    "title": "Software Engineer - Backend",
+    "department": "Engineering",
+    "location": ["New York City", "San Francisco", "Buenos Aires"]
+  },
+  {
+    "id": "5",
+    "title": "Data Scientist",
+    "department": "Engineering",
+    "location": ["New York City"]
+  },
+  {
+    "id": "6",
+    "title": "Account Executive",
+    "department": "Growth",
+    "location": ["New York City"]
+  },
+  {
+    "id": "7",
+    "title": "Technical Recruiter",
+    "department": "People",
+    "location": ["New York City"]
+  },
+  {
+    "id": "8",
+    "title": "AI Strategist",
+    "department": "AI Strategy & Research",
+    "location": ["New York City"]
+  },
+  {
+    "id": "9",
+    "title": "Product Marketing Manager",
+    "department": "Marketing",
+    "location": ["New York City"]
+  },
+  {
+    "id": "10",
+    "title": "Engagement Manager",
+    "department": "Customer Success",
+    "location": ["New York City"]
+  }
+]
+
