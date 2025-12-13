@@ -22,10 +22,11 @@ export default function Header() {
           {/* Logo - Column 1 */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2 px-4">
-              <div className="h-6 w-6 rounded-full bg-[var(--text-primary)]" />
-              <span className="text-small font-semibold text-[var(--text-primary)]">
-                Profound
-              </span>
+              <img
+                src="/profound-logo.svg"
+                alt="Profound"
+                className="h-4 w-auto"
+              />
             </Link>
           </div>
 

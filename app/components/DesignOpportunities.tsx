@@ -2,7 +2,7 @@ import Cursor from './Cursor';
 
 export default function DesignOpportunities() {
   return (
-    <div className="relative bg-[var(--bg-black)] hover:bg-[#131313] transition-colors border border-[var(--divider)] cursor-pointer overflow-hidden" style={{ height: '140px' }}>
+    <div className="relative bg-[var(--bg-black)] hover:bg-[#131313] transition-colors border border-[var(--divider)] cursor-pointer overflow-hidden" style={{ height: '172px' }}>
       <div className="container-main relative h-full">
         {/* Cursor container - absolute positioned, fills height, spans columns 3-4 width */}
         {/* Positioned relative to DesignOpportunities component, clipped by its width */}

@@ -30,10 +30,10 @@ export default function InvestorValues() {
       {/* Three full-width boxes in a stack */}
       <div className="flex flex-col">
         {/* First row: Sequoia centered */}
-        <div className="relative bg-[var(--bg-black)] hover:bg-[#131313] transition-colors border border-[var(--divider)] cursor-pointer" style={{ height: '140px' }}>
+        <div className="relative bg-[var(--bg-black)] border border-[var(--divider)] cursor-pointer group" style={{ height: '156px' }}>
           <div className="container-main relative h-full">
             <div className="relative grid h-full" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
-              <div className="col-span-4 px-4 flex items-center justify-center h-full">
+              <div className="col-span-4 px-4 flex items-center justify-center h-full transition-all duration-500 group-hover:blur-md">
                 <img 
                   src="/Investors/Sequoia_Capital_logo.svg" 
                   alt="Sequoia Capital" 
@@ -42,64 +42,141 @@ export default function InvestorValues() {
               </div>
             </div>
           </div>
+          {/* Visit site text */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span 
+              className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+              style={{ color: '#EEDD45' }}
+            >
+              Visit site
+            </span>
+          </div>
         </div>
 
-        {/* Second row: Kleiner, NVIDIA, Khosla evenly spaced */}
-        <div className="relative bg-[var(--bg-black)] hover:bg-[#131313] transition-colors border-l border-r border-b border-[var(--divider)] cursor-pointer" style={{ height: '140px' }}>
-          <div className="container-main relative h-full">
-            <div className="relative grid h-full" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
-              <div className="col-span-4 px-4 flex items-center justify-around h-full">
-                <div className="flex items-center justify-center" style={{ height: '140px', width: '100%' }}>
+        {/* Second row: Kleiner, NVIDIA, Khosla - separate boxes */}
+        <div className="relative border-l border-r border-b border-[var(--divider)]">
+          <div className="container-main relative">
+            <div className="relative grid" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
+              {/* Kleiner */}
+              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
                   <img 
                     src="/Investors/Kleiner.svg" 
                     alt="Kleiner Perkins" 
                     className={`${logoSizes.kleiner} w-auto max-h-full object-contain filter brightness-0 invert`}
                   />
                 </div>
-                <div className="flex items-center justify-center" style={{ height: '140px', width: '100%' }}>
+                {/* Visit site text */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <span 
+                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                    style={{ color: '#EEDD45' }}
+                  >
+                    Visit site
+                  </span>
+                </div>
+              </div>
+              {/* NVIDIA */}
+              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
                   <img 
                     src="/Investors/NVIDIA_logo.svg" 
                     alt="NVIDIA" 
                     className={`${logoSizes.nvidia} w-auto max-h-full object-contain filter brightness-0 invert`}
                   />
                 </div>
-                <div className="flex items-center justify-center" style={{ height: '140px', width: '100%' }}>
+                {/* Visit site text */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <span 
+                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                    style={{ color: '#EEDD45' }}
+                  >
+                    Visit site
+                  </span>
+                </div>
+              </div>
+              {/* Khosla */}
+              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
                   <img 
                     src="/Investors/Khosla_Ventures_Logo.svg" 
                     alt="Khosla Ventures" 
                     className={`${logoSizes.khosla} w-auto max-h-full object-contain filter brightness-0 invert`}
                   />
                 </div>
+                {/* Visit site text */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <span 
+                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                    style={{ color: '#EEDD45' }}
+                  >
+                    Visit site
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Third row: SouthPark, SAGA, SV_Angel evenly spaced */}
-        <div className="relative bg-[var(--bg-black)] hover:bg-[#131313] transition-colors border-l border-r border-b border-[var(--divider)] cursor-pointer" style={{ height: '140px' }}>
-          <div className="container-main relative h-full">
-            <div className="relative grid h-full" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
-              <div className="col-span-4 px-4 flex items-center justify-around h-full">
-                <div className="flex items-center justify-center" style={{ height: '140px', width: '100%' }}>
-                  <img 
+        {/* Third row: SouthPark, SAGA, SV_Angel - separate boxes */}
+        <div className="relative border-l border-r border-b border-[var(--divider)]">
+          <div className="container-main relative">
+            <div className="relative grid" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
+              {/* SouthPark */}
+              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
+                  <img  
                     src="/Investors/SouthPark.svg" 
                     alt="South Park Commons" 
                     className={`${logoSizes.southPark} w-auto max-h-full object-contain filter brightness-0 invert`}
                   />
                 </div>
-                <div className="flex items-center justify-center" style={{ height: '140px', width: '100%' }}>
+                {/* Visit site text */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <span 
+                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                    style={{ color: '#EEDD45' }}
+                  >
+                    Visit site
+                  </span>
+                </div>
+              </div>
+              {/* SAGA */}
+              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
                   <img 
                     src="/Investors/SAGA.svg" 
                     alt="SAGA" 
                     className={`${logoSizes.saga} w-auto max-h-full object-contain filter brightness-0 invert`}
                   />
                 </div>
-                <div className="flex items-center justify-center" style={{ height: '140px', width: '100%' }}>
+                {/* Visit site text */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <span 
+                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                    style={{ color: '#EEDD45' }}
+                  >
+                    Visit site
+                  </span>
+                </div>
+              </div>
+              {/* SV_Angel */}
+              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
                   <img 
                     src="/Investors/SV_Angel.svg" 
                     alt="SV Angel" 
                     className={`${logoSizes.svAngel} w-auto max-h-full object-contain filter brightness-0 invert`}
                   />
+                </div>
+                {/* Visit site text */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <span 
+                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                    style={{ color: '#EEDD45' }}
+                  >
+                    Visit site
+                  </span>
                 </div>
               </div>
             </div>
