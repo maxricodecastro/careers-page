@@ -1,17 +1,13 @@
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
-import jobsData from "../data/jobs.json";
 
 export default function Footer() {
-  const jobCount = jobsData.length;
-
   return (
     <footer className="relative w-full bg-[#000000] border-t border-[var(--divider)]">
       <div className="container-main relative">
-        {/* 4-column grid with responsive columns (264px max, scales down) */}
+        {/* 2-column grid with responsive columns (264px max, scales down) */}
         <div
           className="relative grid py-12"
-          style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}
+          style={{ gridTemplateColumns: 'repeat(2, minmax(0, 264px))' }}
         >
           {/* Column 1: Logo */}
           <div className="px-4">
@@ -24,89 +20,7 @@ export default function Footer() {
             </Link>
           </div>
 
-          {/* Column 2: Resources */}
-          <div className="px-4">
-            <h3 className="text-body-sm text-[var(--text-primary)] font-normal mb-6">
-              Resources
-            </h3>
-            <nav className="flex flex-col gap-4">
-              <Link
-                href="/blog"
-                className="text-body-sm text-[var(--text-secondary)] font-normal hover:text-[var(--text-primary)] transition-colors"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/customers"
-                className="text-body-sm text-[var(--text-secondary)] font-normal hover:text-[var(--text-primary)] transition-colors"
-              >
-                Customers
-              </Link>
-              <Link
-                href="/guides"
-                className="text-body-sm text-[var(--text-secondary)] font-normal hover:text-[var(--text-primary)] transition-colors"
-              >
-                Guides
-              </Link>
-              <Link
-                href="/developer-docs"
-                className="text-body-sm text-[var(--text-secondary)] font-normal hover:text-[var(--text-primary)] transition-colors"
-              >
-                Developer Docs
-              </Link>
-              <Link
-                href="/brand-assets"
-                className="text-body-sm text-[var(--text-secondary)] font-normal hover:text-[var(--text-primary)] transition-colors"
-              >
-                Brand Assets
-              </Link>
-            </nav>
-          </div>
-
-          {/* Column 3: Company */}
-          <div className="px-4">
-            <h3 className="text-body-sm text-[var(--text-primary)] font-normal mb-6">
-              Company
-            </h3>
-            <nav className="flex flex-col gap-4">
-              <Link
-                href="/careers"
-                className="text-body-sm text-[var(--text-secondary)] font-normal hover:text-[var(--text-primary)] transition-colors flex items-center gap-2"
-              >
-                Careers
-                <span className="inline-flex items-center justify-center px-1.5 py-0.5 rounded-sm bg-[#333333] text-[var(--text-primary)] text-xs font-normal min-w-[20px]">
-                  {jobCount}
-                </span>
-              </Link>
-              <Link
-                href="/contact"
-                className="text-body-sm text-[var(--text-secondary)] font-normal hover:text-[var(--text-primary)] transition-colors"
-              >
-                Contact Us
-              </Link>
-              <Link
-                href="/enterprise"
-                className="text-body-sm text-[var(--text-secondary)] font-normal hover:text-[var(--text-primary)] transition-colors"
-              >
-                Enterprise
-              </Link>
-              <Link
-                href="/media"
-                className="text-body-sm text-[var(--text-secondary)] font-normal hover:text-[var(--text-primary)] transition-colors"
-              >
-                Media
-              </Link>
-              <Link
-                href="/legal"
-                className="text-body-sm text-[var(--text-secondary)] font-normal hover:text-[var(--text-primary)] transition-colors flex items-center gap-1"
-              >
-                Legal
-                <ChevronDown className="h-3 w-3" />
-              </Link>
-            </nav>
-          </div>
-
-          {/* Column 4: Social */}
+          {/* Column 2: Social */}
           <div className="px-4">
             <h3 className="text-body-sm text-[var(--text-primary)] font-normal mb-6">
               Social
@@ -159,14 +73,14 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar - divider spans full width, content constrained to 4 columns */}
+      {/* Bottom Bar - divider spans full width, content constrained to 2 columns */}
       <div className="border-t border-[var(--divider)] pt-6 pb-16">
         <div className="container-main relative">
           <div
             className="relative grid"
-            style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}
+            style={{ gridTemplateColumns: 'repeat(2, minmax(0, 264px))' }}
           >
-            <div className="col-span-4 flex items-center justify-between px-4">
+            <div className="col-span-2 flex items-center justify-between px-4">
               {/* Copyright */}
               <div className="text-body-sm font-normal" style={{ color: '#464646' }}>
                 © 2025 Profound

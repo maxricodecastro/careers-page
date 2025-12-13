@@ -11,6 +11,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Careers at Profound",
   description: "Join the team that's defining AI visibility for some of the biggest brands in the world",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
