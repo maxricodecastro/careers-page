@@ -8,13 +8,14 @@ import jobsData from '../data/jobs.json';
 
 export default function Jobs() {
   const [activeDepartment, setActiveDepartment] = useState<{ name: string; count: number } | null>(null);
-  const [isSticky, setIsSticky] = useState(false);
   const departmentRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const stickyHeaderRef = useRef<HTMLDivElement>(null);
   const jobsContainerRef = useRef<HTMLDivElement>(null);
 
+  // Department order for sorting
+  const departmentOrder = useMemo(() => ['Engineering', 'Growth', 'Marketing', 'Customer Success', 'People'], []);
+  
   // Group jobs by department and maintain order (memoized)
-  const departmentOrder = ['Engineering', 'Growth', 'Marketing', 'Customer Success', 'People'];
   const jobsByDepartment = useMemo(() => {
     return jobsData.reduce((acc, job) => {
       const dept = job.department || 'General';
@@ -36,72 +37,36 @@ export default function Jobs() {
       if (bIndex === -1) return -1;
       return aIndex - bIndex;
     });
-  }, [jobsByDepartment]);
+  }, [jobsByDepartment, departmentOrder]);
 
-  // Detect when sticky header becomes sticky and stays sticky until end of jobs
+  // Detect sticky state and which department is currently at the sticky header position
+  // All state updates happen inside scroll/resize event callbacks (external system subscriptions)
   useEffect(() => {
     if (!stickyHeaderRef.current || !jobsContainerRef.current) return;
 
     const stickyHeader = stickyHeaderRef.current;
     const container = jobsContainerRef.current;
 
-    const checkSticky = () => {
+    const updateState = () => {
       const headerRect = stickyHeader.getBoundingClientRect();
       const containerRect = container.getBoundingClientRect();
       
       // Check if sticky header is at its sticky position (54px from top)
       const isHeaderSticky = headerRect.top <= 54;
       
-      // Check if the bottom of the jobs container is still visible or above viewport
-      // This ensures we stay sticky until we've scrolled past all jobs
+      // Check if the bottom of the jobs container is still visible
       const containerBottom = containerRect.bottom;
       const isContainerStillVisible = containerBottom > 0;
       
-      // Only set sticky if header is sticky AND container is still visible
-      // This keeps it sticky until we've scrolled past all the job listings
-      setIsSticky(isHeaderSticky && isContainerStillVisible);
-    };
-
-    // Initial check
-    checkSticky();
-
-    // Listen for scroll events
-    window.addEventListener('scroll', checkSticky, { passive: true });
-    window.addEventListener('resize', checkSticky, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', checkSticky);
-      window.removeEventListener('resize', checkSticky);
-    };
-  }, []);
-
-  // When sticky header becomes sticky, show first department
-  useEffect(() => {
-    if (isSticky && sortedDepartments.length > 0) {
-      const firstDept = sortedDepartments.find(dept => dept !== 'General') || sortedDepartments[0];
-      if (firstDept) {
-        const count = jobsByDepartment[firstDept]?.length || 0;
-        // Only set if not already set or if we're switching to sticky
-        setActiveDepartment(prev => {
-          if (!prev) {
-            return { name: firstDept, count };
-          }
-          return prev;
-        });
+      const isSticky = isHeaderSticky && isContainerStillVisible;
+      
+      // Update active department based on sticky state
+      if (!isSticky) {
+        setActiveDepartment(null);
+        return;
       }
-    } else if (!isSticky) {
-      setActiveDepartment(null);
-    }
-  }, [isSticky, sortedDepartments, jobsByDepartment]);
 
-  // Detect which department is currently at the sticky header position
-  useEffect(() => {
-    if (!isSticky) {
-      return;
-    }
-
-    const updateActiveDepartment = () => {
-      const stickyHeaderPosition = 54; // Position where sticky header sits
+      const stickyHeaderPosition = 54;
       const scrollPosition = window.scrollY + stickyHeaderPosition;
 
       // Find which department section's top is at or just above the sticky header position
@@ -112,7 +77,6 @@ export default function Jobs() {
           const rect = ref.getBoundingClientRect();
           const elementTop = window.scrollY + rect.top;
           
-          // Check if this department's top is at or above the sticky header position
           if (elementTop <= scrollPosition) {
             departments.push({ name: deptName, top: elementTop });
           }
@@ -136,15 +100,12 @@ export default function Jobs() {
       }
     };
 
-    // Initial check
-    updateActiveDepartment();
-
     // Listen for scroll events with throttling for performance
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          updateActiveDepartment();
+          updateState();
           ticking = false;
         });
         ticking = true;
@@ -152,13 +113,13 @@ export default function Jobs() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', updateActiveDepartment, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', updateActiveDepartment);
+      window.removeEventListener('resize', handleScroll);
     };
-  }, [isSticky, jobsByDepartment, sortedDepartments]);
+  }, [jobsByDepartment, sortedDepartments]);
 
   // Get header text
   const getHeaderText = () => {
@@ -205,10 +166,10 @@ export default function Jobs() {
                 To build the best technology so businesses can understand and control how they appear in AI answers.
               </p>
               <p className="text-body-md text-[var(--text-secondary)] mb-8 max-w-[384px]">
-                At Profound, we believe that AI visibility will become every company's most important metric.
+                At Profound, we believe that AI visibility will become every company&apos;s most important metric.
               </p>
               <p className="text-body-md text-[var(--text-secondary)] max-w-[384px]">
-                We're building an early-stage team here in NYC, SF, Buenos Aires, and London to work on one of the world's most interesting technical challenges: AI interpretability.
+                We&apos;re building an early-stage team here in NYC, SF, Buenos Aires, and London to work on one of the world&apos;s most interesting technical challenges: AI interpretability.
               </p>
             </div>
             

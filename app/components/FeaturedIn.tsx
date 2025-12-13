@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import GridCard from './GridCard';
 
 export default function FeaturedIn() {
   // Logo size controls - adjust these values to control individual logo sizes
@@ -119,41 +120,29 @@ export default function FeaturedIn() {
               const isLongLogo = ['fortune', 'newYorkTimes', 'theInformation'].includes(logo.sizeKey);
               
               return (
-                <div
+                <GridCard
                   key={index}
-                  className="flex items-center justify-center relative group cursor-pointer"
-                  style={{ height: '140px' }}
+                  height={140}
+                  contentClassName={`flex items-center justify-center w-full h-full ${
+                    isLongLogo ? 'px-2' : 'px-4'
+                  }`}
+                  backgroundClassName="bg-transparent"
                 >
-                  <div 
-                    className={`flex items-center justify-center w-full h-full transition-all duration-500 group-hover:blur-md ${
-                      isLongLogo ? 'px-2' : 'px-4'
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logoSize * 5} // Larger width for Next.js Image optimization
+                    height={logoSize * 5}
+                    style={{ 
+                      height: `${logoSize}px`, 
+                      width: 'auto', 
+                      maxWidth: isLongLogo ? 'calc(100% - 8px)' : '100%'
+                    }}
+                    className={`object-contain ${
+                      shouldApplyWhiteFilter ? 'filter brightness-0 invert' : ''
                     }`}
-                  >
-                    <Image
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={logoSize * 5} // Larger width for Next.js Image optimization
-                      height={logoSize * 5}
-                      style={{ 
-                        height: `${logoSize}px`, 
-                        width: 'auto', 
-                        maxWidth: isLongLogo ? 'calc(100% - 8px)' : '100%'
-                      }}
-                      className={`object-contain ${
-                        shouldApplyWhiteFilter ? 'filter brightness-0 invert' : ''
-                      }`}
-                    />
-                  </div>
-                  {/* Visit site text */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <span 
-                      className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
-                      style={{ color: '#EEDD45' }}
-                    >
-                      Visit site
-                    </span>
-                  </div>
-                </div>
+                  />
+                </GridCard>
               );
             })}
           </div>

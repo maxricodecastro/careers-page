@@ -1,3 +1,5 @@
+import FullWidthCard from './FullWidthCard';
+import GridCard from './GridCard';
 import InvestorProfile from './InvestorProfile';
 import Values from './Values';
 
@@ -30,10 +32,10 @@ export default function InvestorValues() {
       {/* Three full-width boxes in a stack */}
       <div className="flex flex-col">
         {/* First row: Sequoia centered - Mobile: full width, Desktop: full width */}
-        <div className="relative bg-[var(--bg-black)] border border-[var(--divider)] cursor-pointer group" style={{ height: '156px' }}>
+        <FullWidthCard>
           <div className="container-main relative h-full">
             <div className="relative grid h-full investor-values-logo-grid">
-              <div className="col-span-2 md:col-span-4 px-4 flex items-center justify-center h-full transition-all duration-500 group-hover:blur-md">
+              <div className="col-span-2 md:col-span-4 px-4 flex items-center justify-center h-full">
                 <img 
                   src="/Investors/Sequoia_Capital_logo.svg" 
                   alt="Sequoia Capital" 
@@ -42,78 +44,42 @@ export default function InvestorValues() {
               </div>
             </div>
           </div>
-          {/* Visit site text */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <span 
-              className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
-              style={{ color: '#EEDD45' }}
-            >
-              Visit site
-            </span>
-          </div>
-        </div>
+        </FullWidthCard>
 
         {/* Second row: Kleiner, NVIDIA, Khosla - Mobile: full width stacked, Desktop: 3 columns */}
         <div className="relative bg-[var(--bg-black)] border-l border-r border-b border-[var(--divider)]">
           <div className="container-main relative">
             <div className="relative grid investor-values-three-grid">
               {/* Kleiner - Mobile: full width, Desktop: column 1 */}
-              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group border-b md:border-b-0 border-[var(--divider)]" style={{ height: '156px' }}>
-                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
-                  <img 
-                    src="/Investors/Kleiner.svg" 
-                    alt="Kleiner Perkins" 
-                    className={`${logoSizes.kleiner} w-auto max-h-full object-contain filter brightness-0 invert`}
-                  />
-                </div>
-                {/* Visit site text */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <span 
-                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
-                    style={{ color: '#EEDD45' }}
-                  >
-                    Visit site
-                  </span>
-                </div>
-              </div>
+              <GridCard
+                className="col-span-2 md:col-span-1"
+                borderClassName="border-b md:border-b-0 border-[var(--divider)]"
+              >
+                <img 
+                  src="/Investors/Kleiner.svg" 
+                  alt="Kleiner Perkins" 
+                  className={`${logoSizes.kleiner} w-auto max-h-full object-contain filter brightness-0 invert`}
+                />
+              </GridCard>
               {/* NVIDIA - Mobile: full width, Desktop: column 2 */}
-              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group border-b md:border-b-0 border-[var(--divider)]" style={{ height: '156px' }}>
-                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
-                  <img 
-                    src="/Investors/NVIDIA_logo.svg" 
-                    alt="NVIDIA" 
-                    className={`${logoSizes.nvidia} w-auto max-h-full object-contain filter brightness-0 invert`}
-                  />
-                </div>
-                {/* Visit site text */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <span 
-                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
-                    style={{ color: '#EEDD45' }}
-                  >
-                    Visit site
-                  </span>
-                </div>
-              </div>
+              <GridCard
+                className="col-span-2 md:col-span-1"
+                borderClassName="border-b md:border-b-0 border-[var(--divider)]"
+              >
+                <img 
+                  src="/Investors/NVIDIA_logo.svg" 
+                  alt="NVIDIA" 
+                  className={`${logoSizes.nvidia} w-auto max-h-full object-contain filter brightness-0 invert`}
+                />
+              </GridCard>
               {/* Khosla - Mobile: full width, Desktop: column 3 */}
-              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
-                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
-                  <img 
-                    src="/Investors/Khosla_Ventures_Logo.svg" 
-                    alt="Khosla Ventures" 
-                    className={`${logoSizes.khosla} w-auto max-h-full object-contain filter brightness-0 invert`}
-                  />
-                </div>
-                {/* Visit site text */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <span 
-                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
-                    style={{ color: '#EEDD45' }}
-                  >
-                    Visit site
-                  </span>
-                </div>
-              </div>
+              <GridCard className="col-span-2 md:col-span-1">
+                <img 
+                  src="/Investors/Khosla_Ventures_Logo.svg" 
+                  alt="Khosla Ventures" 
+                  className={`${logoSizes.khosla} w-auto max-h-full object-contain filter brightness-0 invert`}
+                />
+              </GridCard>
             </div>
           </div>
         </div>
@@ -123,62 +89,35 @@ export default function InvestorValues() {
           <div className="container-main relative">
             <div className="relative grid investor-values-three-grid">
               {/* SouthPark - Mobile: full width, Desktop: column 1 */}
-              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group border-b md:border-b-0 border-[var(--divider)]" style={{ height: '156px' }}>
-                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
-                  <img  
-                    src="/Investors/SouthPark.svg" 
-                    alt="South Park Commons" 
-                    className={`${logoSizes.southPark} w-auto max-h-full object-contain filter brightness-0 invert`}
-                  />
-                </div>
-                {/* Visit site text */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <span 
-                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
-                    style={{ color: '#EEDD45' }}
-                  >
-                    Visit site
-                  </span>
-                </div>
-              </div>
+              <GridCard
+                className="col-span-2 md:col-span-1"
+                borderClassName="border-b md:border-b-0 border-[var(--divider)]"
+              >
+                <img  
+                  src="/Investors/SouthPark.svg" 
+                  alt="South Park Commons" 
+                  className={`${logoSizes.southPark} w-auto max-h-full object-contain filter brightness-0 invert`}
+                />
+              </GridCard>
               {/* SAGA - Mobile: full width, Desktop: column 2 */}
-              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group border-b md:border-b-0 border-[var(--divider)]" style={{ height: '156px' }}>
-                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
-                  <img 
-                    src="/Investors/SAGA.svg" 
-                    alt="SAGA" 
-                    className={`${logoSizes.saga} w-auto max-h-full object-contain filter brightness-0 invert`}
-                  />
-                </div>
-                {/* Visit site text */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <span 
-                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
-                    style={{ color: '#EEDD45' }}
-                  >
-                    Visit site
-                  </span>
-                </div>
-              </div>
+              <GridCard
+                className="col-span-2 md:col-span-1"
+                borderClassName="border-b md:border-b-0 border-[var(--divider)]"
+              >
+                <img 
+                  src="/Investors/SAGA.svg" 
+                  alt="SAGA" 
+                  className={`${logoSizes.saga} w-auto max-h-full object-contain filter brightness-0 invert`}
+                />
+              </GridCard>
               {/* SV_Angel - Mobile: full width, Desktop: column 3 */}
-              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
-                <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
-                  <img 
-                    src="/Investors/SV_Angel.svg" 
-                    alt="SV Angel" 
-                    className={`${logoSizes.svAngel} w-auto max-h-full object-contain filter brightness-0 invert`}
-                  />
-                </div>
-                {/* Visit site text */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <span 
-                    className="text-[14px] opacity-0 translate-y-[4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
-                    style={{ color: '#EEDD45' }}
-                  >
-                    Visit site
-                  </span>
-                </div>
-              </div>
+              <GridCard className="col-span-2 md:col-span-1">
+                <img 
+                  src="/Investors/SV_Angel.svg" 
+                  alt="SV Angel" 
+                  className={`${logoSizes.svAngel} w-auto max-h-full object-contain filter brightness-0 invert`}
+                />
+              </GridCard>
             </div>
           </div>
         </div>
