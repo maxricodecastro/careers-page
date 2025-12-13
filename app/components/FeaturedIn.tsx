@@ -58,15 +58,14 @@ export default function FeaturedIn() {
             }}
           />
           
-          {/* Nested grid for logos - 2 rows x 4 columns */}
+          {/* Nested grid for logos - Mobile: 2 rows x 2 columns, Desktop: 2 rows x 4 columns */}
           <div 
-            className="grid relative"
-            style={{ gridTemplateColumns: 'repeat(4, minmax(0, 1fr))' }}
+            className="grid relative featured-in-grid"
           >
-            {/* Vertical dotted dividers between columns */}
-            <div className="absolute left-[25%] top-0 bottom-0 dotted-line" />
+            {/* Vertical dotted dividers between columns - Mobile: 1 divider at 50%, Desktop: 3 dividers */}
             <div className="absolute left-[50%] top-0 bottom-0 dotted-line" />
-            <div className="absolute left-[75%] top-0 bottom-0 dotted-line" />
+            <div className="hidden md:block absolute left-[25%] top-0 bottom-0 dotted-line" />
+            <div className="hidden md:block absolute left-[75%] top-0 bottom-0 dotted-line" />
             
             {/* Logo items - All 8 logos in 2 rows x 4 columns */}
             {logos.map((logo, index) => {

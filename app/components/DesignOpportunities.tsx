@@ -48,10 +48,9 @@ export default function DesignOpportunities() {
       {/* Inner content container with overflow-hidden to clip cursors */}
       <div className="relative bg-[var(--bg-black)] hover:bg-[#131313] transition-colors overflow-hidden h-full">
         <div className="container-main relative h-full">
-        {/* Cursor container - absolute positioned, fills height, spans columns 3-4 width */}
-        {/* Positioned relative to DesignOpportunities component, clipped by its width */}
+        {/* Cursor container - Desktop only, hidden on mobile */}
         <div 
-          className="absolute top-0 bottom-0"
+          className="hidden md:block absolute top-0 bottom-0"
           style={{ 
             left: '85%',
             width: '40%'
@@ -83,9 +82,9 @@ export default function DesignOpportunities() {
           </div>
         </div>
 
-        <div className="relative grid h-full" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
-          {/* Content spans columns 1-2 (same as mission section) */}
-          <div className="col-span-2 px-4 flex flex-col justify-center h-full gap-4">
+        <div className="relative grid h-full design-opportunities-grid">
+          {/* Content spans columns 1-2 on desktop, full width on mobile */}
+          <div className="col-span-2 md:col-span-2 px-4 flex flex-col justify-center h-full gap-4">
             {/* Text content (h3 + p) */}
             <div className="flex flex-col gap-2">
               <h3 className="text-h2 text-[var(--text-primary)]" style={{ fontSize: "18px" }}>

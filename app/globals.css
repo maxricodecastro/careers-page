@@ -259,6 +259,201 @@ body {
   background-size: 2px 12px;
 }
 
+/* Header grid - responsive */
+.header-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .header-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+/* Hero grid - responsive */
+.hero-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .hero-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+/* Jobs grid - responsive */
+.jobs-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .jobs-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+/* Jobs content grid - responsive */
+.jobs-content-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .jobs-content-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+/* Stats column - force stacking on mobile */
+.stats-column {
+  grid-column: 1;
+}
+
+@media (min-width: 768px) {
+  .stats-column-1 {
+    grid-column: 3;
+  }
+  .stats-column-2 {
+    grid-column: 4;
+  }
+}
+
+/* Job item location positioning */
+@media (min-width: 768px) {
+  .job-item-location {
+    left: calc(50% + 16px);
+  }
+}
+
+/* Design opportunities grid - responsive */
+.design-opportunities-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .design-opportunities-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+/* Investor values grids - responsive */
+.investor-values-title-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .investor-values-title-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+.investor-values-logo-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .investor-values-logo-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+.investor-values-three-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .investor-values-three-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.investor-profiles-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .investor-profiles-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+/* Values grids - responsive */
+.values-title-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .values-title-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+.values-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .values-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+/* Process feature grids - responsive */
+.process-title-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .process-title-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+.process-feature-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .process-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
+.process-left-box {
+  min-height: auto;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .process-left-box {
+    min-height: auto;
+    height: auto;
+  }
+}
+
+/* Featured in grid - responsive */
+.featured-in-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .featured-in-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Process section grid - responsive */
+.process-section-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .process-section-grid {
+    grid-template-columns: repeat(4, minmax(0, 264px));
+  }
+}
+
 /* --------------------------------------------
    Component Utilities
    -------------------------------------------- */

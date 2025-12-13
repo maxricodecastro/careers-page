@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 
 export default function Header() {
   const navItems = [
@@ -14,11 +14,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 min-h-[54px] border-b border-[var(--divider)] bg-[var(--bg-header)] backdrop-blur-sm flex items-center">
       <div className="container-main relative w-full">
-        {/* 4-column grid with responsive columns (264px max, scales down) */}
-        <div
-          className="relative grid items-center h-[54px]"
-          style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}
-        >
+        {/* Mobile: 2-column grid, Desktop: 4-column grid */}
+        <div className="header-grid relative grid items-center h-[54px]">
           {/* Logo - Column 1 */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2 px-4">
@@ -30,8 +27,18 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Navigation - Columns 2-3 */}
-          <nav className="col-span-2 flex items-center justify-center gap-0.5">
+          {/* Mobile: Right side actions - Column 2 */}
+          <div className="flex items-center justify-end gap-4 px-4 md:hidden">
+            <Link href="/contact-sales" className="btn-primary font-semibold">
+              Get a Demo
+            </Link>
+            <button className="text-white">
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Desktop: Navigation - Columns 2-3 */}
+          <nav className="hidden md:col-span-2 md:flex items-center justify-center gap-0.5">
             {navItems.map((item, index) => {
               const hasChevron = index < 3; // Platform, Resources, Solutions
               return (
@@ -51,8 +58,8 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Right side actions - Column 4 */}
-          <div className="flex items-center justify-end gap-4 px-4">
+          {/* Desktop: Right side actions - Column 4 */}
+          <div className="hidden md:flex items-center justify-end gap-4 px-4">
             <Link
               href="/login"
               className="text-small font-semibold text-[var(--text-primary)] transition-colors hover:text-[var(--text-primary)]"

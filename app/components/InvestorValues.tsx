@@ -18,8 +18,8 @@ export default function InvestorValues() {
     <div className="relative">
       {/* Title - left aligned */}
       <div className="container-main relative mb-6">
-        <div className="grid" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
-          <div className="col-span-4 px-1">
+        <div className="investor-values-title-grid grid">
+          <div className="col-span-2 md:col-span-4 px-1">
             <h3 className="text-body-md text-[var(--text-primary)]">
               Our investors
             </h3>
@@ -29,11 +29,11 @@ export default function InvestorValues() {
 
       {/* Three full-width boxes in a stack */}
       <div className="flex flex-col">
-        {/* First row: Sequoia centered */}
+        {/* First row: Sequoia centered - Mobile: full width, Desktop: full width */}
         <div className="relative bg-[var(--bg-black)] border border-[var(--divider)] cursor-pointer group" style={{ height: '156px' }}>
           <div className="container-main relative h-full">
-            <div className="relative grid h-full" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
-              <div className="col-span-4 px-4 flex items-center justify-center h-full transition-all duration-500 group-hover:blur-md">
+            <div className="relative grid h-full investor-values-logo-grid">
+              <div className="col-span-2 md:col-span-4 px-4 flex items-center justify-center h-full transition-all duration-500 group-hover:blur-md">
                 <img 
                   src="/Investors/Sequoia_Capital_logo.svg" 
                   alt="Sequoia Capital" 
@@ -53,12 +53,12 @@ export default function InvestorValues() {
           </div>
         </div>
 
-        {/* Second row: Kleiner, NVIDIA, Khosla - separate boxes */}
+        {/* Second row: Kleiner, NVIDIA, Khosla - Mobile: full width stacked, Desktop: 3 columns */}
         <div className="relative bg-[var(--bg-black)] border-l border-r border-b border-[var(--divider)]">
           <div className="container-main relative">
-            <div className="relative grid" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
-              {/* Kleiner */}
-              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+            <div className="relative grid investor-values-three-grid">
+              {/* Kleiner - Mobile: full width, Desktop: column 1 */}
+              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group border-b md:border-b-0 border-[var(--divider)]" style={{ height: '156px' }}>
                 <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
                   <img 
                     src="/Investors/Kleiner.svg" 
@@ -76,8 +76,8 @@ export default function InvestorValues() {
                   </span>
                 </div>
               </div>
-              {/* NVIDIA */}
-              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+              {/* NVIDIA - Mobile: full width, Desktop: column 2 */}
+              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group border-b md:border-b-0 border-[var(--divider)]" style={{ height: '156px' }}>
                 <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
                   <img 
                     src="/Investors/NVIDIA_logo.svg" 
@@ -95,8 +95,8 @@ export default function InvestorValues() {
                   </span>
                 </div>
               </div>
-              {/* Khosla */}
-              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+              {/* Khosla - Mobile: full width, Desktop: column 3 */}
+              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
                 <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
                   <img 
                     src="/Investors/Khosla_Ventures_Logo.svg" 
@@ -118,12 +118,12 @@ export default function InvestorValues() {
           </div>
         </div>
 
-        {/* Third row: SouthPark, SAGA, SV_Angel - separate boxes */}
+        {/* Third row: SouthPark, SAGA, SV_Angel - Mobile: full width stacked, Desktop: 3 columns */}
         <div className="relative bg-[var(--bg-black)] border-l border-r border-b border-[var(--divider)]">
           <div className="container-main relative">
-            <div className="relative grid" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
-              {/* SouthPark */}
-              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+            <div className="relative grid investor-values-three-grid">
+              {/* SouthPark - Mobile: full width, Desktop: column 1 */}
+              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group border-b md:border-b-0 border-[var(--divider)]" style={{ height: '156px' }}>
                 <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
                   <img  
                     src="/Investors/SouthPark.svg" 
@@ -141,8 +141,8 @@ export default function InvestorValues() {
                   </span>
                 </div>
               </div>
-              {/* SAGA */}
-              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+              {/* SAGA - Mobile: full width, Desktop: column 2 */}
+              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group border-b md:border-b-0 border-[var(--divider)]" style={{ height: '156px' }}>
                 <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
                   <img 
                     src="/Investors/SAGA.svg" 
@@ -160,8 +160,8 @@ export default function InvestorValues() {
                   </span>
                 </div>
               </div>
-              {/* SV_Angel */}
-              <div className="relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
+              {/* SV_Angel - Mobile: full width, Desktop: column 3 */}
+              <div className="col-span-2 md:col-span-1 relative bg-[var(--bg-black)] cursor-pointer group" style={{ height: '156px' }}>
                 <div className="h-full flex items-center justify-center transition-all duration-500 group-hover:blur-md">
                   <img 
                     src="/Investors/SV_Angel.svg" 
@@ -184,10 +184,10 @@ export default function InvestorValues() {
         </div>
       </div>
 
-      {/* Two rows of investor profiles */}
+      {/* Two rows of investor profiles - Mobile: 2 per row, Desktop: 4 per row */}
       <div className="relative">
         <div className="container-main relative">
-          <div className="grid -mx-4" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
+          <div className="grid -mx-4 investor-profiles-grid">
             {/* Row 1 */}
             <InvestorProfile
               imageSrc="/Investors/People/rauchg.jpeg"
@@ -200,21 +200,21 @@ export default function InvestorValues() {
               imageSrc="/Investors/People/Karim.webp"
               name="Karim Atiyeh"
               role="CTO, Ramp"
-              borderClasses="border-[var(--divider)]"
+              borderClasses="border-[var(--divider)] md:border-l-0"
               showDivider={true}
             />
             <InvestorProfile
               imageSrc="/Investors/People/Kevin.jpeg"
               name="Kevin Wang"
               role="CPO, Braze"
-              borderClasses="border-[var(--divider)]"
+              borderClasses="border-l md:border-l-0 border-[var(--divider)]"
               showDivider={true}
             />
             <InvestorProfile
               imageSrc="/Investors/People/andrew.webp"
               name="Andrew Karam"
               role="Cofounder, AppLovin"
-              borderClasses="border-r border-[var(--divider)]"
+              borderClasses="border-[var(--divider)] md:border-r md:border-l-0"
               showDivider={false}
             />
 
@@ -230,21 +230,21 @@ export default function InvestorValues() {
               imageSrc="/Investors/People/joradn.jpeg"
               name="Jordan Singer"
               role="CEO, Mainframe"
-              borderClasses="border-t border-b border-[var(--divider)]"
+              borderClasses="border-t border-b border-[var(--divider)] md:border-l-0"
               showDivider={true}
             />
             <InvestorProfile
               imageSrc="/Investors/People/scott belsky.jpeg"
               name="Scott Belsky"
               role="Partner, A24"
-              borderClasses="border-t border-b border-[var(--divider)]"
+              borderClasses="border-l md:border-l-0 border-t border-b border-[var(--divider)]"
               showDivider={true}
             />
             <InvestorProfile
               imageSrc="/Investors/People/david senra.jpg"
               name="David Senra"
               role="Founders Podcast"
-              borderClasses="border-r border-t border-b border-[var(--divider)]"
+              borderClasses="border-[var(--divider)] border-t border-b md:border-r md:border-l-0"
               showDivider={false}
             />
           </div>

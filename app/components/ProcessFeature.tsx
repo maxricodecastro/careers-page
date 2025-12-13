@@ -38,8 +38,8 @@ export default function ProcessFeature() {
     <div className="relative">
       {/* Title - left aligned with same spacing as "Our investors" */}
       <div className="container-main relative mb-6">
-        <div className="grid" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
-          <div className="col-span-4 px-1">
+        <div className="process-title-grid grid">
+          <div className="col-span-2 md:col-span-4 px-1">
             <h3 className="text-body-md text-[var(--text-primary)]">
               Our process
             </h3>
@@ -47,27 +47,26 @@ export default function ProcessFeature() {
         </div>
       </div>
 
-      {/* Two boxes, each spanning 2 columns */}
+      {/* Mobile: Stacked layout, Desktop: Two boxes side by side */}
       <div className="relative">
         <div className="container-main relative">
-          <div className="grid -mx-4 items-stretch" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
-            {/* Left box - spans 2 columns */}
-            <div className="relative col-span-2 bg-[#0F0F0F] border-t border-b border-l border-[var(--divider)] flex flex-col">
-              {/* Wrapper to create scrollable space - matches right box height */}
+          <div className="grid -mx-4 items-stretch process-feature-grid flex-col md:grid">
+            {/* Left box - Mobile: small height, Desktop: spans 2 columns */}
+            <div className="relative col-span-2 bg-[#0F0F0F] border-t border-b border-l border-r md:border-r-0 border-[var(--divider)] flex flex-col process-left-box">
+              {/* Mobile: Small box with minimal padding, Desktop: Full height sticky */}
               <div className="relative flex-1">
-                {/* Sticky text element - will scroll within this container */}
-                <div className="sticky px-8 py-8 flex items-start" style={{ top: '54px', bottom: '32px' }}>
+                <div className="px-8 py-4 md:sticky md:px-8 md:py-8 flex items-center md:items-start" style={{ top: '54px', bottom: '32px' }}>
                   <div className="text-h2 text-[var(--text-primary)] font-medium" style={{ maxWidth: '384px' }}>
                     Candid. Respectful. Honest
                   </div>
                 </div>
               </div>
-              {/* Dotted divider on the right */}
-              <div className="absolute right-0 top-0 bottom-0 dotted-line" />
+              {/* Dotted divider on the right - Desktop only */}
+              <div className="hidden md:block absolute right-0 top-0 bottom-0 dotted-line" />
             </div>
 
-            {/* Right box - spans 2 columns, contains three stacked boxes */}
-            <div className="relative col-span-2 bg-[#0F0F0F] border-t border-b border-r border-[var(--divider)] flex flex-col">
+            {/* Right box - Mobile: stacked, Desktop: spans 2 columns */}
+            <div className="relative col-span-2 bg-[#0F0F0F] border-t border-b border-l border-r border-[var(--divider)] flex flex-col">
               <div className="flex flex-col">
                 <div className="relative">
                   <ProcessStep

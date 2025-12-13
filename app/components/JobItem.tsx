@@ -8,13 +8,11 @@ interface JobItemProps {
 export default function JobItem({ title, department, location, isLast }: JobItemProps) {
   return (
     <div className={`relative bg-[var(--bg-black)] hover:bg-[#131313] transition-colors border-t border-r border-l ${isLast ? 'border-b' : ''} border-[var(--divider)] cursor-pointer`}>
-      {/* Row layout with three groups: Title+Dept | Location | Button */}
-      {/* Content spans full width, location aligned to start of column 3 (50% of grid) */}
+      {/* Mobile: Stacked layout, Desktop: Row layout */}
       <div className="container-main relative">
-        <div className="relative flex items-center justify-between py-6">
-          {/* Group 1: Title + Department (left-aligned) */}
-          {/* Padding matches mission section text padding (px-4 = 16px) */}
-          <div className="flex items-center gap-2" style={{ paddingLeft: '2px' }}>
+        <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-0 py-6">
+          {/* Group 1: Title + Department (same row on mobile and desktop) */}
+          <div className="flex flex-row items-center gap-2" style={{ paddingLeft: '2px' }}>
             <span className="text-body-sm text-[var(--text-primary)]">
               {title}
             </span>
@@ -25,24 +23,17 @@ export default function JobItem({ title, department, location, isLast }: JobItem
             )}
           </div>
 
-          {/* Group 2: Location (aligned to start of third column at 50% of grid) */}
-          {/* Positioned at 50% of container-main width (start of column 3) with padding */}
-          {/* TODO: Adjust padding as needed - currently 16px from column start */}
+          {/* Group 2: Location (Mobile: static, Desktop: absolute positioned) */}
           {location && location.length > 0 && (
             <div 
-              className="absolute text-body-sm text-[var(--text-secondary)]"
-              style={{ 
-                // 50% aligns with start of column 3 in the grid
-                // Add padding to offset from the column edge
-                left: 'calc(50% + 16px)', // TODO: Adjust padding value as needed
-              }}
+              className="text-body-sm text-[var(--text-secondary)] md:absolute job-item-location"
             >
               {location.join(', ')}
             </div>
           )}
 
-          {/* Group 3: Learn more button (right-aligned) */}
-          <button className="btn-secondary cursor-pointer">
+          {/* Group 3: Learn more button */}
+          <button className="btn-secondary cursor-pointer self-start">
             Learn more
           </button>
         </div>

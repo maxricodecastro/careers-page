@@ -3,29 +3,28 @@ export default function Hero() {
     <section className="relative w-full h-screen bg-[#000000]">
       {/* Container with max-width and padding */}
       <div className="container-main relative h-full">
-        {/* 4-column grid with responsive columns (264px max, scales down) */}
+        {/* Mobile: 2-column grid, Desktop: 4-column grid */}
         <div 
-          className="relative grid h-full"
-          style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}
+          className="hero-grid relative grid h-full"
         >
-          {/* 5 vertical dotted lines - positioned at column boundaries */}
+          {/* Mobile: 3 vertical dotted lines, Desktop: 5 vertical dotted lines */}
           {/* Left border line */}
           <div className="absolute left-0 top-0 bottom-0 dotted-line" />
           
-          {/* Divider after column 1 - 25% of grid width */}
-          <div className="absolute left-[25%] top-0 bottom-0 dotted-line" />
+          {/* Divider after column 1 - Mobile: 50%, Desktop: 25% */}
+          <div className="absolute left-[50%] md:left-[25%] top-0 bottom-0 dotted-line" />
           
-          {/* Divider after column 2 - 50% of grid width */}
-          <div className="absolute left-[50%] top-0 bottom-0 dotted-line" />
+          {/* Divider after column 2 - Desktop only: 50% */}
+          <div className="hidden md:block absolute left-[50%] top-0 bottom-0 dotted-line" />
           
-          {/* Divider after column 3 - 75% of grid width */}
-          <div className="absolute left-[75%] top-0 bottom-0 dotted-line" />
+          {/* Divider after column 3 - Desktop only: 75% */}
+          <div className="hidden md:block absolute left-[75%] top-0 bottom-0 dotted-line" />
           
           {/* Right border line */}
           <div className="absolute right-0 top-0 bottom-0 dotted-line" />
           
           {/* Overlay content - centered vertically, following grid layout */}
-          <div className="col-span-4 flex flex-col items-center justify-center h-full relative z-10">
+          <div className="col-span-2 md:col-span-4 flex flex-col items-center justify-center h-full relative z-10">
             {/* Big white circle with low opacity */}
             <div className="w-[324px] h-[324px] rounded-full bg-white opacity-10 mb-8" />
             

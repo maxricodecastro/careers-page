@@ -12,31 +12,28 @@ export default function Jobs() {
       
       {/* Container with max-width and padding */}
       <div className="container-main relative">
-        {/* 4-column grid with responsive columns (264px max, scales down) */}
-        <div 
-          className="relative grid"
-          style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}
-        >
-          {/* 5 vertical dotted lines - positioned at column boundaries */}
+        {/* Mobile: 2-column grid, Desktop: 4-column grid */}
+        <div className="jobs-grid relative grid">
+          {/* Mobile: 3 vertical dotted lines, Desktop: 5 vertical dotted lines */}
           {/* Left border line */}
           <div className="absolute left-0 top-0 bottom-0 dotted-line" />
           
-          {/* Divider after column 1 - 25% of grid width */}
-          <div className="absolute left-[25%] top-0 bottom-0 dotted-line" />
+          {/* Divider after column 1 - Mobile: 50%, Desktop: 25% */}
+          <div className="absolute left-[50%] md:left-[25%] top-0 bottom-0 dotted-line" />
           
-          {/* Divider after column 2 - 50% of grid width */}
-          <div className="absolute left-[50%] top-0 bottom-0 dotted-line" />
+          {/* Divider after column 2 - Desktop only: 50% */}
+          <div className="hidden md:block absolute left-[50%] top-0 bottom-0 dotted-line" />
           
-          {/* Divider after column 3 - 75% of grid width */}
-          <div className="absolute left-[75%] top-0 bottom-0 dotted-line" />
+          {/* Divider after column 3 - Desktop only: 75% */}
+          <div className="hidden md:block absolute left-[75%] top-0 bottom-0 dotted-line" />
           
           {/* Right border line */}
           <div className="absolute right-0 top-0 bottom-0 dotted-line" />
           
-          {/* Content container - single div for margin/padding control */}
-          <div className="col-span-4 relative z-10 grid py-32" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
-            {/* Mission section - spans columns 1-2 */}
-            <div className="col-span-2 px-4">
+          {/* Content container - Mobile: stacked, Desktop: grid */}
+          <div className="col-span-2 md:col-span-4 relative z-10 grid py-32 jobs-content-grid">
+            {/* Mission section - Mobile: full width, Desktop: spans columns 1-2 */}
+            <div className="col-span-2 md:col-span-2 px-4">
               {/* Height is based on content */}
               <h2 className="text-h3 text-[var(--text-primary)] mb-4">
                 Our mission
@@ -52,31 +49,28 @@ export default function Jobs() {
               </p>
             </div>
             
-            {/* Stats section - column 3 */}
-            <div className="col-span-1 px-4">
+            {/* Stats wrapper - Mobile: all stats in column 1 stacked, Desktop: column 3 */}
+            <div className="col-span-1 md:col-span-1 px-4 stats-column stats-column-1 mt-8 md:mt-0">
               {/* Height is based on content */}
               <div className="mb-8 relative">
-                {/* Left border aligned with grid column line - light grey, height matches this stat */}
-                {/* Positioned at -16px (px-4) to align with grid divider at 50% */}
+                {/* Left border aligned with grid column line - visible on mobile and desktop */}
                 <div className="absolute -left-4 top-0 bottom-0 w-[1px] bg-[#555555]" />
                 <div className="text-h2 text-[var(--text-primary)] mb-2">1B+</div>
                 <div className="text-body text-[var(--text-secondary)]">Citations analyzed daily</div>
               </div>
-              <div className="relative">
-                {/* Left border aligned with grid column line - light grey, height matches this stat */}
-                {/* Positioned at -16px (px-4) to align with grid divider at 50% */}
+              <div className="mb-8 md:mb-0 relative">
+                {/* Left border aligned with grid column line - visible on mobile and desktop */}
                 <div className="absolute -left-4 top-0 bottom-0 w-[1px] bg-[#555555]" />
                 <div className="text-h2 text-[var(--text-primary)] mb-2">30B+</div>
                 <div className="text-body text-[var(--text-secondary)]">Crawler visits analyzed daily</div>
               </div>
             </div>
             
-            {/* Stats section - column 4 */}
-            <div className="col-span-1 px-4">
+            {/* Stats section - Mobile: continues in column 1 (below previous stats), Desktop: column 4 */}
+            <div className="col-span-1 md:col-span-1 px-4 stats-column stats-column-2">
               {/* Height is based on content */}
               <div className="relative">
-                {/* Left border aligned with grid column line - light grey, height matches this stat */}
-                {/* Positioned at -16px (px-4) to align with grid divider at 75% */}
+                {/* Left border aligned with grid column line - visible on mobile and desktop */}
                 <div className="absolute -left-4 top-0 bottom-0 w-[1px] bg-[#555555]" />
                 <div className="text-h2 text-[var(--text-primary)] mb-2">10M+</div>
                 <div className="text-body text-[var(--text-secondary)]">Prompts analyzed daily</div>
@@ -84,14 +78,13 @@ export default function Jobs() {
             </div>
           </div>
 
-          {/* Job Listings Header - spans all 4 columns */}
-          {/* TODO: Adjust bottom margin as needed - currently 32px */}
-          <div className="col-span-4 relative z-10 mb-8" style={{ marginBottom: '32px' }}>
-            <div className="flex items-center justify-between px-4">
+          {/* Job Listings Header - Mobile: stacked, Desktop: side by side */}
+          <div className="col-span-2 md:col-span-4 relative z-10 mb-8" style={{ marginBottom: '32px' }}>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-0 px-4">
               <h2 className="text-h2 text-[var(--text-primary)]">
                 We have {jobsData.length} open positions
               </h2>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
                 <button className="btn-primary flex items-center gap-2">
                   All departments
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -108,8 +101,8 @@ export default function Jobs() {
             </div>
           </div>
 
-          {/* Job Listings - spans all 4 columns, stacked vertically */}
-          <div className="col-span-4 relative z-10">
+          {/* Job Listings - spans all columns, stacked vertically */}
+          <div className="col-span-2 md:col-span-4 relative z-10">
             {jobsData.map((job, index) => (
               <JobItem
                 key={job.id}
@@ -121,14 +114,13 @@ export default function Jobs() {
             ))}
           </div>
 
-          {/* Design Opportunities Component - spans all 4 columns */}
-          {/* TODO: Adjust top margin as needed for spacing */}
-          <div className="col-span-4 relative z-10" style={{ marginTop: '96px', marginBottom: '96px' }}>
+          {/* Design Opportunities Component - spans all columns */}
+          <div className="col-span-2 md:col-span-4 relative z-10" style={{ marginTop: '96px', marginBottom: '96px' }}>
             <DesignOpportunities />
           </div>
 
-          {/* Investor Values Component - spans all 4 columns */}
-          <div className="col-span-4 relative z-10">
+          {/* Investor Values Component - spans all columns */}
+          <div className="col-span-2 md:col-span-4 relative z-10">
             <InvestorValues />
           </div>
         </div>
