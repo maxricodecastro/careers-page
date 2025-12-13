@@ -7,8 +7,8 @@ export default function Jobs() {
   return (
     <section className="relative w-full border border-t border-divider">
       
-      {/* Background - black for now, will be changed later */}
-      <div className="absolute inset-0 bg-[var(--bg-black)]" />
+      {/* Background - gradient from top to bottom */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#101010] to-[#171717]" />
       
       {/* Container with max-width and padding */}
       <div className="container-main relative">

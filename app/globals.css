@@ -12,8 +12,8 @@
    -------------------------------------------- */
 :root {
   /* Background Colors */
-  --bg-primary: #0d0d0d;
-  --bg-black: #000000;
+  --bg-primary: #0F0F0F;
+  --bg-black: #0F0F0F;
   --bg-header: rgba(0, 0, 0, 0.7);
 
   /* Text Colors */

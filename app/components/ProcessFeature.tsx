@@ -50,12 +50,16 @@ export default function ProcessFeature() {
       {/* Two boxes, each spanning 2 columns */}
       <div className="relative">
         <div className="container-main relative">
-          <div className="grid -mx-4" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
+          <div className="grid -mx-4 items-stretch" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
             {/* Left box - spans 2 columns */}
-            <div className="relative col-span-2 bg-[var(--bg-black)] border-t border-b border-l border-[var(--divider)]">
-              <div className="px-8 py-8 flex items-start">
-                <div className="text-h2 text-[var(--text-primary)] font-medium" style={{ maxWidth: '384px' }}>
-                  Candid. Respectful. Honest
+            <div className="relative col-span-2 bg-[#0F0F0F] border-t border-b border-l border-[var(--divider)] flex flex-col">
+              {/* Wrapper to create scrollable space - matches right box height */}
+              <div className="relative flex-1">
+                {/* Sticky text element - will scroll within this container */}
+                <div className="sticky px-8 py-8 flex items-start" style={{ top: '54px', bottom: '32px' }}>
+                  <div className="text-h2 text-[var(--text-primary)] font-medium" style={{ maxWidth: '384px' }}>
+                    Candid. Respectful. Honest
+                  </div>
                 </div>
               </div>
               {/* Dotted divider on the right */}
@@ -63,7 +67,7 @@ export default function ProcessFeature() {
             </div>
 
             {/* Right box - spans 2 columns, contains three stacked boxes */}
-            <div className="relative col-span-2 bg-[var(--bg-black)] border-t border-b border-r border-[var(--divider)]">
+            <div className="relative col-span-2 bg-[#0F0F0F] border-t border-b border-r border-[var(--divider)] flex flex-col">
               <div className="flex flex-col">
                 <div className="relative">
                   <ProcessStep

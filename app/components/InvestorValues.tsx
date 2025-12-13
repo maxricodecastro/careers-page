@@ -54,7 +54,7 @@ export default function InvestorValues() {
         </div>
 
         {/* Second row: Kleiner, NVIDIA, Khosla - separate boxes */}
-        <div className="relative border-l border-r border-b border-[var(--divider)]">
+        <div className="relative bg-[var(--bg-black)] border-l border-r border-b border-[var(--divider)]">
           <div className="container-main relative">
             <div className="relative grid" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
               {/* Kleiner */}
@@ -119,7 +119,7 @@ export default function InvestorValues() {
         </div>
 
         {/* Third row: SouthPark, SAGA, SV_Angel - separate boxes */}
-        <div className="relative border-l border-r border-b border-[var(--divider)]">
+        <div className="relative bg-[var(--bg-black)] border-l border-r border-b border-[var(--divider)]">
           <div className="container-main relative">
             <div className="relative grid" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
               {/* SouthPark */}

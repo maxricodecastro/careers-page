@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen">
+    <section className="relative w-full h-screen bg-[#000000]">
       {/* Container with max-width and padding */}
       <div className="container-main relative h-full">
         {/* 4-column grid with responsive columns (264px max, scales down) */}

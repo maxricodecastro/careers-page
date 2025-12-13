@@ -6,7 +6,7 @@ export default function Footer() {
   const jobCount = jobsData.length;
 
   return (
-    <footer className="relative w-full bg-[var(--bg-black)] border-t border-[var(--divider)]">
+    <footer className="relative w-full bg-[#000000] border-t border-[var(--divider)]">
       <div className="container-main relative">
         {/* 4-column grid with responsive columns (264px max, scales down) */}
         <div
