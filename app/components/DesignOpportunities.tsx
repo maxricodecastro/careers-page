@@ -2,8 +2,52 @@ import Cursor from './Cursor';
 
 export default function DesignOpportunities() {
   return (
-    <div className="relative bg-[var(--bg-black)] hover:bg-[#131313] transition-colors border border-[var(--divider)] cursor-pointer overflow-hidden" style={{ height: '172px' }}>
-      <div className="container-main relative h-full">
+    <div className="relative border border-[var(--divider)] cursor-pointer" style={{ height: '172px' }}>
+      {/* Corner squares - positioned on outer wrapper so they're not clipped */}
+      <div 
+        className="absolute border border-[var(--divider)] bg-[var(--bg-black)] z-10"
+        style={{ 
+          width: '10px', 
+          height: '10px',
+          top: 0,
+          left: 0,
+          transform: 'translate(-50%, -50%)'
+        }}
+      />
+      <div 
+        className="absolute border border-[var(--divider)] bg-[var(--bg-black)] z-10"
+        style={{ 
+          width: '10px', 
+          height: '10px',
+          top: 0,
+          right: 0,
+          transform: 'translate(50%, -50%)'
+        }}
+      />
+      <div 
+        className="absolute border border-[var(--divider)] bg-[var(--bg-black)] z-10"
+        style={{ 
+          width: '10px', 
+          height: '10px',
+          bottom: 0,
+          left: 0,
+          transform: 'translate(-50%, 50%)'
+        }}
+      />
+      <div 
+        className="absolute border border-[var(--divider)] bg-[var(--bg-black)] z-10"
+        style={{ 
+          width: '10px', 
+          height: '10px',
+          bottom: 0,
+          right: 0,
+          transform: 'translate(50%, 50%)'
+        }}
+      />
+      
+      {/* Inner content container with overflow-hidden to clip cursors */}
+      <div className="relative bg-[var(--bg-black)] hover:bg-[#131313] transition-colors overflow-hidden h-full">
+        <div className="container-main relative h-full">
         {/* Cursor container - absolute positioned, fills height, spans columns 3-4 width */}
         {/* Positioned relative to DesignOpportunities component, clipped by its width */}
         <div 
@@ -41,18 +85,25 @@ export default function DesignOpportunities() {
 
         <div className="relative grid h-full" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 264px))' }}>
           {/* Content spans columns 1-2 (same as mission section) */}
-          <div className="col-span-2 px-4 flex flex-col gap-4 justify-center h-full">
-            <h3 className="text-h2 text-[var(--text-primary)]" style={{ fontSize: "18px" }}>
-              Design Opportunities at Profound
-            </h3>
-            <p className="text-body-md text-[var(--text-secondary)]">
-              Explore our design team, philosophy, and opportunities.
-            </p>
-            <button className="btn-primary w-fit cursor-pointer">
-              Learn more
-            </button>
+          <div className="col-span-2 px-4 flex flex-col justify-center h-full gap-4">
+            {/* Text content (h3 + p) */}
+            <div className="flex flex-col gap-2">
+              <h3 className="text-h2 text-[var(--text-primary)]" style={{ fontSize: "18px" }}>
+                Design Opportunities at Profound
+              </h3>
+              <p className="text-body-md text-[var(--text-secondary)]">
+                Explore our design team, philosophy, and opportunities.
+              </p>
+            </div>
+            {/* Button */}
+            <div className="flex flex-col">
+              <button className="btn-primary w-fit cursor-pointer">
+                Learn more
+              </button>
+            </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

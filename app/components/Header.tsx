@@ -31,14 +31,14 @@ export default function Header() {
           </div>
 
           {/* Navigation - Columns 2-3 */}
-          <nav className="col-span-2 flex items-center justify-center gap-1">
+          <nav className="col-span-2 flex items-center justify-center gap-0.5">
             {navItems.map((item, index) => {
               const hasChevron = index < 3; // Platform, Resources, Solutions
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-1 px-3 text-small font-semibold transition-colors ${
+                  className={`flex items-center gap-0.5 px-3 text-small font-semibold transition-colors ${
                     item.active
                       ? "text-[var(--text-primary)]"
                       : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
