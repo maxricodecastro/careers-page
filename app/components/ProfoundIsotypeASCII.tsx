@@ -35,7 +35,7 @@ export default function ProfoundIsotypeASCII() {
                           ..........                           `;
 
   return (
-    <pre className="text-white font-mono text-xs leading-none mb-8 whitespace-pre">
+    <pre className="text-white font-mono text-[6px] sm:text-[8px] md:text-xs leading-none mb-4 md:mb-8 whitespace-pre overflow-x-auto">
       {asciiArt}
     </pre>
   );

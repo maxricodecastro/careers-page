@@ -67,6 +67,47 @@ export default function FeaturedIn() {
             <div className="hidden md:block absolute left-[25%] top-0 bottom-0 dotted-line" />
             <div className="hidden md:block absolute left-[75%] top-0 bottom-0 dotted-line" />
             
+            {/* Horizontal dotted dividers between rows - Mobile: at 25%, 50%, 75%, Desktop: at 50% */}
+            <div 
+              className="absolute left-0 right-0 top-[25%] md:hidden"
+              style={{
+                height: '1px',
+                background: `repeating-linear-gradient(
+                  90deg,
+                  var(--divider) 0px,
+                  var(--divider) 6px,
+                  transparent 6px,
+                  transparent 12px
+                )`
+              }}
+            />
+            <div 
+              className="absolute left-0 right-0 top-1/2"
+              style={{
+                height: '1px',
+                background: `repeating-linear-gradient(
+                  90deg,
+                  var(--divider) 0px,
+                  var(--divider) 6px,
+                  transparent 6px,
+                  transparent 12px
+                )`
+              }}
+            />
+            <div 
+              className="absolute left-0 right-0 top-[75%] md:hidden"
+              style={{
+                height: '1px',
+                background: `repeating-linear-gradient(
+                  90deg,
+                  var(--divider) 0px,
+                  var(--divider) 6px,
+                  transparent 6px,
+                  transparent 12px
+                )`
+              }}
+            />
+            
             {/* Logo items - All 8 logos in 2 rows x 4 columns */}
             {logos.map((logo, index) => {
               const shouldApplyWhiteFilter = 

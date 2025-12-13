@@ -187,7 +187,34 @@ export default function InvestorValues() {
       {/* Two rows of investor profiles - Mobile: 2 per row, Desktop: 4 per row */}
       <div className="relative">
         <div className="container-main relative">
-          <div className="grid -mx-4 investor-profiles-grid">
+          <div className="grid -mx-4 investor-profiles-grid relative">
+            {/* Horizontal dotted dividers between rows - Mobile: at 50% and 75%, Desktop: at 50% */}
+            <div 
+              className="absolute left-[-16px] right-[-16px] top-1/2 z-10"
+              style={{
+                height: '1px',
+                background: `repeating-linear-gradient(
+                  90deg,
+                  var(--divider) 0px,
+                  var(--divider) 6px,
+                  transparent 6px,
+                  transparent 12px
+                )`
+              }}
+            />
+            <div 
+              className="absolute left-[-16px] right-[-16px] top-[75%] md:hidden z-10"
+              style={{
+                height: '1px',
+                background: `repeating-linear-gradient(
+                  90deg,
+                  var(--divider) 0px,
+                  var(--divider) 6px,
+                  transparent 6px,
+                  transparent 12px
+                )`
+              }}
+            />
             {/* Row 1 */}
             <InvestorProfile
               imageSrc="/Investors/People/rauchg.jpeg"
@@ -223,28 +250,28 @@ export default function InvestorValues() {
               imageSrc="/Investors/People/jordihays.jpeg"
               name="Jordi Hays"
               role="TBPN"
-              borderClasses="border-l border-t border-b border-[var(--divider)]"
+              borderClasses="border-l border-t-0 md:border-t border-b border-[var(--divider)]"
               showDivider={true}
             />
             <InvestorProfile
               imageSrc="/Investors/People/joradn.jpeg"
               name="Jordan Singer"
               role="CEO, Mainframe"
-              borderClasses="border-t border-b border-[var(--divider)] md:border-l-0"
+              borderClasses="border-t-0 md:border-t border-b border-[var(--divider)] md:border-l-0"
               showDivider={true}
             />
             <InvestorProfile
               imageSrc="/Investors/People/scott belsky.jpeg"
               name="Scott Belsky"
               role="Partner, A24"
-              borderClasses="border-l md:border-l-0 border-t border-b border-[var(--divider)]"
+              borderClasses="border-l md:border-l-0 border-t-0 md:border-t border-b border-[var(--divider)]"
               showDivider={true}
             />
             <InvestorProfile
               imageSrc="/Investors/People/david senra.jpg"
               name="David Senra"
               role="Founders Podcast"
-              borderClasses="border-[var(--divider)] border-t border-b md:border-r md:border-l-0"
+              borderClasses="border-[var(--divider)] border-t-0 md:border-t border-b md:border-r md:border-l-0"
               showDivider={false}
             />
           </div>
