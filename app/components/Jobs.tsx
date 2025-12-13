@@ -1,9 +1,172 @@
+'use client';
+
+import { useEffect, useRef, useState, useMemo } from 'react';
 import JobItem from './JobItem';
 import DesignOpportunities from './DesignOpportunities';
 import InvestorValues from './InvestorValues';
 import jobsData from '../data/jobs.json';
 
 export default function Jobs() {
+  const [activeDepartment, setActiveDepartment] = useState<{ name: string; count: number } | null>(null);
+  const [isSticky, setIsSticky] = useState(false);
+  const departmentRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  const stickyHeaderRef = useRef<HTMLDivElement>(null);
+  const jobsContainerRef = useRef<HTMLDivElement>(null);
+
+  // Group jobs by department and maintain order (memoized)
+  const departmentOrder = ['Engineering', 'Growth', 'Marketing', 'Customer Success', 'People'];
+  const jobsByDepartment = useMemo(() => {
+    return jobsData.reduce((acc, job) => {
+      const dept = job.department || 'General';
+      if (!acc[dept]) {
+        acc[dept] = [];
+      }
+      acc[dept].push(job);
+      return acc;
+    }, {} as Record<string, typeof jobsData>);
+  }, []);
+
+  // Sort departments: ordered departments first, then others (memoized)
+  const sortedDepartments = useMemo(() => {
+    return Object.keys(jobsByDepartment).sort((a, b) => {
+      const aIndex = departmentOrder.indexOf(a);
+      const bIndex = departmentOrder.indexOf(b);
+      if (aIndex === -1 && bIndex === -1) return a.localeCompare(b);
+      if (aIndex === -1) return 1;
+      if (bIndex === -1) return -1;
+      return aIndex - bIndex;
+    });
+  }, [jobsByDepartment]);
+
+  // Detect when sticky header becomes sticky and stays sticky until end of jobs
+  useEffect(() => {
+    if (!stickyHeaderRef.current || !jobsContainerRef.current) return;
+
+    const stickyHeader = stickyHeaderRef.current;
+    const container = jobsContainerRef.current;
+
+    const checkSticky = () => {
+      const headerRect = stickyHeader.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      
+      // Check if sticky header is at its sticky position (54px from top)
+      const isHeaderSticky = headerRect.top <= 54;
+      
+      // Check if the bottom of the jobs container is still visible or above viewport
+      // This ensures we stay sticky until we've scrolled past all jobs
+      const containerBottom = containerRect.bottom;
+      const isContainerStillVisible = containerBottom > 0;
+      
+      // Only set sticky if header is sticky AND container is still visible
+      // This keeps it sticky until we've scrolled past all the job listings
+      setIsSticky(isHeaderSticky && isContainerStillVisible);
+    };
+
+    // Initial check
+    checkSticky();
+
+    // Listen for scroll events
+    window.addEventListener('scroll', checkSticky, { passive: true });
+    window.addEventListener('resize', checkSticky, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', checkSticky);
+      window.removeEventListener('resize', checkSticky);
+    };
+  }, []);
+
+  // When sticky header becomes sticky, show first department
+  useEffect(() => {
+    if (isSticky && sortedDepartments.length > 0) {
+      const firstDept = sortedDepartments.find(dept => dept !== 'General') || sortedDepartments[0];
+      if (firstDept) {
+        const count = jobsByDepartment[firstDept]?.length || 0;
+        // Only set if not already set or if we're switching to sticky
+        setActiveDepartment(prev => {
+          if (!prev) {
+            return { name: firstDept, count };
+          }
+          return prev;
+        });
+      }
+    } else if (!isSticky) {
+      setActiveDepartment(null);
+    }
+  }, [isSticky, sortedDepartments, jobsByDepartment]);
+
+  // Detect which department is currently at the sticky header position
+  useEffect(() => {
+    if (!isSticky) {
+      return;
+    }
+
+    const updateActiveDepartment = () => {
+      const stickyHeaderPosition = 54; // Position where sticky header sits
+      const scrollPosition = window.scrollY + stickyHeaderPosition;
+
+      // Find which department section's top is at or just above the sticky header position
+      const departments: Array<{ name: string; top: number }> = [];
+
+      departmentRefs.current.forEach((ref, deptName) => {
+        if (ref && deptName !== 'General') {
+          const rect = ref.getBoundingClientRect();
+          const elementTop = window.scrollY + rect.top;
+          
+          // Check if this department's top is at or above the sticky header position
+          if (elementTop <= scrollPosition) {
+            departments.push({ name: deptName, top: elementTop });
+          }
+        }
+      });
+
+      // Find the department that's closest to but above the sticky header position
+      if (departments.length > 0) {
+        const activeDept = departments.reduce((prev, current) => 
+          current.top > prev.top ? current : prev
+        );
+        const count = jobsByDepartment[activeDept.name]?.length || 0;
+        setActiveDepartment({ name: activeDept.name, count });
+      } else {
+        // Fallback: if no department found, use the first non-General department
+        const firstDept = sortedDepartments.find(dept => dept !== 'General');
+        if (firstDept) {
+          const count = jobsByDepartment[firstDept]?.length || 0;
+          setActiveDepartment({ name: firstDept, count });
+        }
+      }
+    };
+
+    // Initial check
+    updateActiveDepartment();
+
+    // Listen for scroll events with throttling for performance
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveDepartment();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', updateActiveDepartment, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateActiveDepartment);
+    };
+  }, [isSticky, jobsByDepartment, sortedDepartments]);
+
+  // Get header text
+  const getHeaderText = () => {
+    if (activeDepartment && activeDepartment.name !== 'General') {
+      return `${activeDepartment.name} - ${activeDepartment.count}`;
+    }
+    return `We have ${jobsData.length} open positions`;
+  };
   return (
     <section className="relative w-full border border-t border-divider">
       
@@ -78,40 +241,60 @@ export default function Jobs() {
             </div>
           </div>
 
-          {/* Job Listings Header - Mobile: stacked, Desktop: side by side */}
-          <div className="col-span-2 md:col-span-4 relative z-10 mb-8" style={{ marginBottom: '32px' }}>
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-0 px-4">
-              <h2 className="text-h2 text-[var(--text-primary)]">
-                We have {jobsData.length} open positions
-              </h2>
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
-                <button className="btn-primary flex items-center gap-2">
-                  All departments
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-                <button className="btn-primary flex items-center gap-2">
-                  All locations
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
+          {/* Job Listings Container - wraps header and listings for sticky behavior */}
+          <div ref={jobsContainerRef} className="col-span-2 md:col-span-4 relative z-10">
+            {/* Job Listings Header - Mobile: stacked, Desktop: side by side - Sticky */}
+            <div ref={stickyHeaderRef} className="sticky bg-[#101010] border-b border-[var(--divider)] px-4 pb-8 pt-8 mb-0 z-20" style={{ top: '54px' }}>
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-0">
+                <h2 className="text-h2 text-[var(--text-primary)]">
+                  {getHeaderText()}
+                </h2>
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
+                  <button className="btn-primary flex items-center gap-2">
+                    All departments
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                  <button className="btn-primary flex items-center gap-2">
+                    All locations
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Job Listings - spans all columns, stacked vertically */}
-          <div className="col-span-2 md:col-span-4 relative z-10">
-            {jobsData.map((job, index) => (
-              <JobItem
-                key={job.id}
-                title={job.title}
-                department={job.department}
-                location={job.location}
-                isLast={index === jobsData.length - 1}
-              />
-            ))}
+            {/* Job Listings - spans all columns, stacked vertically */}
+            <div className="relative z-10">
+              {sortedDepartments.map((department, deptIndex) => {
+                const jobs = jobsByDepartment[department];
+                const isLastDepartment = deptIndex === sortedDepartments.length - 1;
+                return (
+                  <div
+                    key={department}
+                    ref={(el) => {
+                      if (el) departmentRefs.current.set(department, el);
+                    }}
+                    data-department={department}
+                  >
+                    {jobs.map((job, jobIndex) => {
+                      const isLastJob = isLastDepartment && jobIndex === jobs.length - 1;
+                      return (
+                        <JobItem
+                          key={job.id}
+                          title={job.title}
+                          department={job.department}
+                          location={job.location}
+                          isLast={isLastJob}
+                        />
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* Design Opportunities Component - spans all columns */}

@@ -1,8 +1,57 @@
+'use client';
+
+import { useState, useRef } from 'react';
 import Cursor from './Cursor';
 
 export default function DesignOpportunities() {
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number } | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorContainerRef = useRef<HTMLDivElement>(null);
+  
+  // Original position for the "You" cursor
+  const originalPosition = { left: 24, top: 48 };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cursorContainerRef.current) return;
+    
+    const cursorContainerRect = cursorContainerRef.current.getBoundingClientRect();
+    
+    // Calculate mouse position relative to the cursor container
+    const x = e.clientX - cursorContainerRect.left;
+    const y = e.clientY - cursorContainerRect.top;
+    
+    setMousePosition({ x, y });
+  };
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsHovering(true);
+    // Capture initial mouse position on hover
+    if (cursorContainerRef.current) {
+      const cursorContainerRect = cursorContainerRef.current.getBoundingClientRect();
+      const x = e.clientX - cursorContainerRect.left;
+      const y = e.clientY - cursorContainerRect.top;
+      setMousePosition({ x, y });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    setMousePosition(null);
+  };
+
   return (
-    <div className="relative border border-[var(--divider)] cursor-pointer" style={{ height: '172px' }}>
+    <div 
+      ref={containerRef}
+      className="relative border border-[var(--divider)]" 
+      style={{ 
+        height: '172px',
+        cursor: isHovering ? 'none' : 'pointer'
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {/* Corner squares - positioned on outer wrapper so they're not clipped */}
       <div 
         className="absolute border border-[var(--divider)] bg-[var(--bg-black)] z-10"
@@ -50,6 +99,7 @@ export default function DesignOpportunities() {
         <div className="container-main relative h-full">
         {/* Cursor container - Desktop only, hidden on mobile */}
         <div 
+          ref={cursorContainerRef}
           className="hidden md:block absolute top-0 bottom-0"
           style={{ 
             left: '85%',
@@ -58,8 +108,17 @@ export default function DesignOpportunities() {
         >
           {/* Cursors container - arranged in a row, absolute positioned */}
           <div className="relative w-full h-full">
-            {/* Cursor 1 - Pink/Magenta: bottom left to top left */}
-            <div className="absolute cursor-pink-animate" style={{ left: '24px', top: '48px' }}>
+            {/* Cursor 1 - Pink/Magenta: follows mouse when hovering */}
+            <div 
+              className={`absolute ${isHovering ? '' : 'cursor-pink-animate'}`}
+              style={{ 
+                left: isHovering && mousePosition ? `${mousePosition.x}px` : `${originalPosition.left}px`,
+                top: isHovering && mousePosition ? `${mousePosition.y}px` : `${originalPosition.top}px`,
+                transition: isHovering ? 'none' : 'left 0.6s ease-out, top 0.6s ease-out',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 9999
+              }}
+            >
               <Cursor 
                 color="#EE47BC" 
                 name="You"

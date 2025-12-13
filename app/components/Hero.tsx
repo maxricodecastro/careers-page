@@ -1,3 +1,5 @@
+import ProfoundIsotypeASCII from './ProfoundIsotypeASCII';
+
 export default function Hero() {
   return (
     <section className="relative w-full h-screen bg-[#000000]">
@@ -25,8 +27,8 @@ export default function Hero() {
           
           {/* Overlay content - centered vertically, following grid layout */}
           <div className="col-span-2 md:col-span-4 flex flex-col items-center justify-center h-full relative z-10">
-            {/* Big white circle with low opacity */}
-            <div className="w-[324px] h-[324px] rounded-full bg-white opacity-10 mb-8" />
+            {/* ASCII art logo */}
+            <ProfoundIsotypeASCII />
             
             {/* Main heading */}
             <h1 className="text-h1 text-[var(--text-primary)] text-center mb-6 max-w-xl">

@@ -621,3 +621,17 @@ body {
   animation: cursorRedMove 9s ease-in-out infinite;
   animation-delay: 1s;
 }
+
+@keyframes dotShimmer {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.ascii-dot {
+  display: inline-block;
+  animation: dotShimmer 2s ease-in-out infinite;
+}

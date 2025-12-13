@@ -31,32 +31,176 @@
   },
   {
     "id": "6",
+    "title": "Senior Software Engineer - Infrastructure",
+    "department": "Engineering",
+    "location": ["New York City", "San Francisco"]
+  },
+  {
+    "id": "7",
+    "title": "ML Engineer",
+    "department": "Engineering",
+    "location": ["New York City", "San Francisco"]
+  },
+  {
+    "id": "8",
+    "title": "Site Reliability Engineer",
+    "department": "Engineering",
+    "location": ["New York City", "Buenos Aires"]
+  },
+  {
+    "id": "9",
+    "title": "Senior Frontend Engineer",
+    "department": "Engineering",
+    "location": ["New York City", "San Francisco", "London"]
+  },
+  {
+    "id": "10",
+    "title": "DevOps Engineer",
+    "department": "Engineering",
+    "location": ["New York City", "Buenos Aires"]
+  },
+  {
+    "id": "11",
+    "title": "Engineering Manager",
+    "department": "Engineering",
+    "location": ["New York City", "San Francisco"]
+  },
+  {
+    "id": "12",
     "title": "Account Executive",
     "department": "Growth",
     "location": ["New York City"]
   },
   {
-    "id": "7",
-    "title": "Technical Recruiter",
-    "department": "People",
+    "id": "13",
+    "title": "Senior Account Executive",
+    "department": "Growth",
+    "location": ["New York City", "San Francisco"]
+  },
+  {
+    "id": "14",
+    "title": "Sales Development Representative",
+    "department": "Growth",
+    "location": ["New York City", "Buenos Aires"]
+  },
+  {
+    "id": "15",
+    "title": "Enterprise Account Executive",
+    "department": "Growth",
+    "location": ["New York City", "San Francisco"]
+  },
+  {
+    "id": "16",
+    "title": "Sales Operations Manager",
+    "department": "Growth",
     "location": ["New York City"]
   },
   {
-    "id": "8",
-    "title": "AI Strategist",
-    "department": "AI Strategy & Research",
+    "id": "17",
+    "title": "Business Development Representative",
+    "department": "Growth",
+    "location": ["New York City", "Buenos Aires"]
+  },
+  {
+    "id": "18",
+    "title": "Revenue Operations Analyst",
+    "department": "Growth",
     "location": ["New York City"]
   },
   {
-    "id": "9",
+    "id": "19",
+    "title": "VP of Sales",
+    "department": "Growth",
+    "location": ["New York City"]
+  },
+  {
+    "id": "20",
     "title": "Product Marketing Manager",
     "department": "Marketing",
     "location": ["New York City"]
   },
   {
-    "id": "10",
+    "id": "21",
+    "title": "Content Marketing Manager",
+    "department": "Marketing",
+    "location": ["New York City", "London"]
+  },
+  {
+    "id": "22",
+    "title": "Growth Marketing Manager",
+    "department": "Marketing",
+    "location": ["New York City", "San Francisco"]
+  },
+  {
+    "id": "23",
+    "title": "Brand Marketing Manager",
+    "department": "Marketing",
+    "location": ["New York City"]
+  },
+  {
+    "id": "24",
+    "title": "Marketing Operations Manager",
+    "department": "Marketing",
+    "location": ["New York City"]
+  },
+  {
+    "id": "25",
+    "title": "Community Manager",
+    "department": "Marketing",
+    "location": ["New York City", "London"]
+  },
+  {
+    "id": "26",
     "title": "Engagement Manager",
     "department": "Customer Success",
+    "location": ["New York City"]
+  },
+  {
+    "id": "27",
+    "title": "Senior Customer Success Manager",
+    "department": "Customer Success",
+    "location": ["New York City", "San Francisco"]
+  },
+  {
+    "id": "28",
+    "title": "Customer Success Operations Manager",
+    "department": "Customer Success",
+    "location": ["New York City"]
+  },
+  {
+    "id": "29",
+    "title": "Technical Account Manager",
+    "department": "Customer Success",
+    "location": ["New York City", "San Francisco"]
+  },
+  {
+    "id": "30",
+    "title": "Customer Support Specialist",
+    "department": "Customer Success",
+    "location": ["New York City", "Buenos Aires"]
+  },
+  {
+    "id": "31",
+    "title": "Technical Recruiter",
+    "department": "People",
+    "location": ["New York City"]
+  },
+  {
+    "id": "32",
+    "title": "People Operations Manager",
+    "department": "People",
+    "location": ["New York City"]
+  },
+  {
+    "id": "33",
+    "title": "Talent Acquisition Specialist",
+    "department": "People",
+    "location": ["New York City", "Buenos Aires"]
+  },
+  {
+    "id": "34",
+    "title": "HR Business Partner",
+    "department": "People",
     "location": ["New York City"]
   }
 ]
