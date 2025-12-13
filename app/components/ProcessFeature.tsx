@@ -66,7 +66,7 @@ export default function ProcessFeature() {
             </div>
 
             {/* Right box - Mobile: stacked, Desktop: spans 2 columns */}
-            <div className="relative col-span-2 bg-[#0F0F0F] border-t border-b border-l border-r border-[var(--divider)] flex flex-col">
+            <div className="relative col-span-2 bg-[#0F0F0F] border-t border-b border-l border-r md:border-l-0 border-[var(--divider)] flex flex-col">
               <div className="flex flex-col">
                 <div className="relative">
                   <ProcessStep

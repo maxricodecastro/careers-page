@@ -32,7 +32,7 @@ export default function Values() {
               category="Experiment"
               title="Build with a bias toward action"
               description="Supercharge your impact with a team that's moving fast, for the biggest brands on Earth."
-              borderClasses="border-t border-l border-r md:border-r border-[var(--divider)]"
+              borderClasses="border-t border-l border-r md:border-r md:border-l-0 border-[var(--divider)]"
               showRightDivider={false}
             />
 
@@ -50,7 +50,7 @@ export default function Values() {
               category="Build"
               title="Be part of the best culture"
               description="Join smart people who are passionate about their work, building things, and growing together. And have some fun while doing it."
-              borderClasses="border-r border-l border-t border-b border-[var(--divider)]"
+              borderClasses="border-r border-l border-t border-b md:border-l-0 border-[var(--divider)]"
               showRightDivider={false}
             />
           </div>
