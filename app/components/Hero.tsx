@@ -31,12 +31,12 @@ export default function Hero() {
             <ProfoundIsotypeASCII />
             
             {/* Main heading */}
-            <h1 className="text-[32px] md:text-h1 leading-[40px] md:leading-[64px] tracking-[-1.5px] md:tracking-[-2.94px] text-[var(--text-primary)] text-center mb-4 md:mb-6 max-w-xl px-4 md:px-0">
+            <h1 className="text-[32px] leading-[40px] tracking-[-1.5px] md:text-[56px] md:leading-[64px] md:tracking-[-2.94px] md:font-medium text-[var(--text-primary)] text-center mb-4 md:mb-6 max-w-xl px-4 md:px-0">
               We help the world understand AI
             </h1>
             
             {/* Subheading */}
-            <p className="text-[16px] md:text-body-lg leading-[22px] md:leading-[24px] tracking-[-0.2px] md:tracking-[-0.045px] text-[var(--text-primary)] text-center mb-6 md:mb-8 max-w-sm px-4 md:px-0">
+            <p className="text-[16px] leading-[22px] tracking-[-0.2px] md:text-[18px] md:leading-[24px] md:tracking-[-0.045px] text-[var(--text-primary)] text-center mb-6 md:mb-8 max-w-sm px-4 md:px-0">
               Join the team that's defining AI visibility for some of the biggest brands in the world
             </p>
             
