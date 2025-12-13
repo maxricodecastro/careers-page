@@ -1,5 +1,6 @@
 import JobItem from './JobItem';
 import DesignOpportunities from './DesignOpportunities';
+import InvestorValues from './InvestorValues';
 import jobsData from '../data/jobs.json';
 
 export default function Jobs() {
@@ -122,8 +123,13 @@ export default function Jobs() {
 
           {/* Design Opportunities Component - spans all 4 columns */}
           {/* TODO: Adjust top margin as needed for spacing */}
-          <div className="col-span-4 relative z-10" style={{ marginTop: '96px' }}>
+          <div className="col-span-4 relative z-10" style={{ marginTop: '96px', marginBottom: '96px' }}>
             <DesignOpportunities />
+          </div>
+
+          {/* Investor Values Component - spans all 4 columns */}
+          <div className="col-span-4 relative z-10">
+            <InvestorValues />
           </div>
         </div>
       </div>
