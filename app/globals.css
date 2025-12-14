@@ -635,3 +635,54 @@ body {
   display: inline-block;
   animation: dotShimmer 2s ease-in-out infinite;
 }
+
+/* Dropdown blur animation - combines blur, scale, and vertical movement */
+.dropdown-blur {
+  filter: blur(12px);
+  transform: translateY(-4px) scale(0.95);
+  transform-origin: top center;
+  opacity: 0;
+}
+
+.dropdown-blur.dropdown-instant-close {
+  display: none !important;
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+  transform: none !important;
+  opacity: 0 !important;
+}
+
+.dropdown-blur.dropdown-open:not(.dropdown-instant-close) {
+  animation: dropdownBlurIn 250ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.dropdown-blur:not(.dropdown-open):not(.dropdown-instant-close) {
+  animation: dropdownBlurOut 100ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes dropdownBlurIn {
+  0% {
+    filter: blur(12px);
+    transform: translateY(-4px) scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes dropdownBlurOut {
+  0% {
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    filter: blur(12px);
+    transform: translateY(-4px) scale(0.95);
+    opacity: 0;
+  }
+}

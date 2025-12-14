@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import JobItem from './JobItem';
 import DesignOpportunities from './DesignOpportunities';
 import InvestorValues from './InvestorValues';
+import Dropdown from './Dropdown';
 import jobsData from '../data/jobs.json';
 
 export default function Jobs() {
@@ -38,6 +39,24 @@ export default function Jobs() {
       return aIndex - bIndex;
     });
   }, [jobsByDepartment, departmentOrder]);
+
+  // Get unique departments for dropdown (excluding General)
+  const departmentOptions = useMemo(() => {
+    const departments = sortedDepartments.filter(dept => dept !== 'General');
+    return ['All departments', ...departments];
+  }, [sortedDepartments]);
+
+  // Get unique locations for dropdown
+  const locationOptions = useMemo(() => {
+    const locationsSet = new Set<string>();
+    jobsData.forEach(job => {
+      if (job.location && Array.isArray(job.location)) {
+        job.location.forEach(loc => locationsSet.add(loc));
+      }
+    });
+    const locations = Array.from(locationsSet).sort();
+    return ['All locations', ...locations];
+  }, []);
 
   // Detect sticky state and which department is currently at the sticky header position
   // All state updates happen inside scroll/resize event callbacks (external system subscriptions)
@@ -211,18 +230,16 @@ export default function Jobs() {
                   {getHeaderText()}
                 </h2>
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
-                  <button className="btn-primary flex items-center gap-2">
-                    All departments
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </button>
-                  <button className="btn-primary flex items-center gap-2">
-                    All locations
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </button>
+                  <Dropdown
+                    label="All departments"
+                    options={departmentOptions}
+                    value="All departments"
+                  />
+                  <Dropdown
+                    label="All locations"
+                    options={locationOptions}
+                    value="All locations"
+                  />
                 </div>
               </div>
             </div>
